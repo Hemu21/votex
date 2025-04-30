@@ -31,7 +31,6 @@ export const usePollFeedback = () => {
   const getPoll = async (pollId) => {
     if (!contract) throw new Error("Contract not loaded");
     const poll = await contract.getPoll(pollId);
-    console.log(poll);
     return {
       creator: poll[0],
       title: poll[1],

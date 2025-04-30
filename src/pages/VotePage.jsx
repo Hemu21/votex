@@ -25,7 +25,6 @@ const Vote = () => {
     async function fetchPoll() {
       try {
         setLoading(true);
-        console.log(pollId);
         const pollData = await getPoll(pollId);
         setTitle(pollData.title);
         setOptions(pollData.options);

@@ -12,9 +12,6 @@ const Dashboard = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log("Account in Dashboard:", account);
-  console.log("poll", polls);
-  console.log("feedback", feedbacks);
   useEffect(() => {
     const fetchData = async () => {
       if (!account || !contract) {
