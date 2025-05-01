@@ -128,7 +128,7 @@ const Feedback = () => {
   return (
     <div className="max-w-lg mx-auto mb-10 relative p-6 bg-gray-800 rounded-lg shadow-md text-white">
       {isCreator && (
-        <div className="absolute top-2 right-2">
+        <div className="flex justify-end mb-2">
           <button
             className="flex w-32 h-10 items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-md border-2 border-transparent hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-md disabled:opacity-60"
             onClick={() => setIsAIEnabled(!isAIEnabled)}
