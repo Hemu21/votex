@@ -61,83 +61,99 @@ const CreateFeedback = () => {
   };
 
   return (
-    <div className="p-10 text-center max-w-lg mx-auto bg-gray-800 rounded-lg text-white mt-10">
-      <h1 className="text-3xl font-bold mb-6">Create a Feedback Form</h1>
-      <form onSubmit={handleCreateFeedback} className="space-y-4">
-        <div>
-          <input
-            type="text"
-            placeholder="Enter feedback title"
-            className="border p-2 w-80 mb-2 block mx-auto text-black"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div>
-          <textarea
-            placeholder="Enter feedback description"
-            className="border p-2 w-80 mb-2 block mx-auto text-black"
-            rows="4"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        {/* Toggle for restricted feedback form */}
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <input
-            type="checkbox"
-            id="restricted"
-            checked={isRestricted}
-            onChange={() => setIsRestricted(!isRestricted)}
-            className="h-5 w-5 text-blue-600 border-gray-300 rounded"
-          />
-          <label htmlFor="restricted" className="text-sm text-gray-200">
-            Restrict feedback form to specific wallet addresses
-          </label>
-        </div>
-        {/* Conditional Textarea for allowed submitters */}
-        {isRestricted && (
-          <div className="mb-2">
-            <textarea
-              placeholder="Enter wallet addresses (one per line)"
-              className="border p-2 w-80 block mx-auto text-black"
-              rows="4"
-              value={allowedSubmitters}
-              onChange={(e) => setAllowedSubmitters(e.target.value)}
-            />
-          </div>
-        )}
-        <button
-          type="submit"
-          disabled={loading}
-          className={`bg-purple-600 py-2 px-6 rounded mt-4 block mx-auto ${
-            loading ? "opacity-50 cursor-not-allowed" : "hover:bg-purple-700"
-          }`}
-        >
-          {loading ? "Creating..." : "Create Feedback"}
-        </button>
-      </form>
-      {feedbackLink && (
-        <div className="text-center w-full mt-4">
-          <p className="text-lg text-white">Share this link:</p>
-          <div className="flex items-center justify-center gap-2 border border-gray-300 px-2 py-1 rounded-lg">
-            <a
-              href={feedbackLink}
-              className="text-blue-500 underline break-all"
-              target="_blank"
-              rel="noopener noreferrer"
+    <div className="min-h-screen flex flex-col justify-center mt-[-40px]">
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-300 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div className="relative px-16 py-10 bg-white shadow-lg rounded-3xl">
+          <div className="w-[300px] mx-auto">
+            <h1 className="text-2xl font-bold font-sans text-gray-700 text-center mb-6">
+              Create a Feedback Form
+            </h1>
+            <form
+              onSubmit={handleCreateFeedback}
+              className="space-y-4 text-gray-700 sm:text-lg sm:leading-7"
             >
-              {feedbackLink}
-            </a>
-            <button
-              onClick={handleCopyLink}
-              className="text-gray-700 hover:text-black"
-            >
-              <LuCopy size={20} />
-            </button>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Enter feedback title"
+                  className="h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <div className="relative">
+                <textarea
+                  placeholder="Enter feedback description"
+                  className="w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600 p-2"
+                  rows="4"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </div>
+              {/* Toggle for restricted feedback form */}
+              <div className="relative flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="restricted"
+                  checked={isRestricted}
+                  onChange={() => setIsRestricted(!isRestricted)}
+                  className="h-5 w-5"
+                />
+                <label htmlFor="restricted" className="text-gray-600 text-sm">
+                  Restrict feedback form to specific wallet addresses
+                </label>
+              </div>
+              {/* Conditional Textarea for allowed submitters */}
+              {isRestricted && (
+                <div className="relative">
+                  <textarea
+                    placeholder="Enter wallet addresses (one per line)"
+                    className="w-full border-2 border-gray-300 text-gray-900 focus:outline-none focus:border-rose-600 p-2"
+                    rows="4"
+                    value={allowedSubmitters}
+                    onChange={(e) => setAllowedSubmitters(e.target.value)}
+                  />
+                </div>
+              )}
+              <div className="relative flex justify-center">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`flex items-center text-white font-bold bg-gradient-to-r from-blue-300 to-purple-500 ${
+                    loading
+                      ? "opacity-50 cursor-not-allowed"
+                      : "animate-bounce hover:animate-none"
+                  } inline-flex text-md mt-5 px-4 py-2 rounded-lg tracking-wide`}
+                >
+                  {loading ? "Creating..." : "Create Feedback"}
+                </button>
+              </div>
+            </form>
+            {feedbackLink && (
+              <div className="text-center w-full mt-4">
+                <p className="text-lg text-gray-500">Share this link:</p>
+                <div className="flex items-center justify-center gap-2 border border-gray-300 px-2 py-1 rounded-lg">
+                  <a
+                    href={feedbackLink}
+                    className="text-blue-500 underline break-all"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {feedbackLink}
+                  </a>
+                  <button
+                    onClick={handleCopyLink}
+                    className="text-gray-700 hover:text-black"
+                  >
+                    <LuCopy size={20} />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
