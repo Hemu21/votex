@@ -14,6 +14,8 @@ dist-ssr
 *.local
 
 /circom/powersOfTau28_hez_final_20.ptau
+/circom/proveVote_cpp
+/circom/proveVote_js
 
 # Editor directories and files
 .vscode/*
